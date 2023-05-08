@@ -130,7 +130,7 @@ def drawFoundWords(lengthlist, foundlist):  # draws found words on the screen in
     column = 0
     font = getFont(20)
 
-    for entry in range(0, (len(lengthlist) - 1)):
+    for entry in range(0, len(lengthlist)):
         answer = foundlist[entry]
         xpos = 70 + (column * 120)
         ypos = 50 + (row * 40)
