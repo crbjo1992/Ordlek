@@ -4,8 +4,9 @@ import random
 import pygame
 from pygame.locals import *
 
-#sets path for files to same folder as the python file (?)
+#sets path for files to same folder as the python file
 os.chdir(os.path.dirname(sys.argv[0]))
+
 ###GLOBAL COLOR VARIABLES###
 white = (255,255,255)
 yellow = (255,255,0)
@@ -15,13 +16,14 @@ blue = (0,0,255)
 black = (0,0,0)
 gray = (128,128,128)
 
-###GLOBAL SCREEN VARIABLE###
+###GLOBAL SCREEN VARIABLES###
 screen_width = 1280
 screen_height = 720
 flags = pygame.SCALED
 screen = pygame.display.set_mode((screen_width,screen_height), flags, vsync=1)
+
 ###WORDLIST INITIATION FUNCTIONS###
-def getKeyword(): #pulls nine-letter keyword from wordlist - this will be the game's usable letters
+def getKeyword(): #pulls eight-letter keyword from wordlist - this will be the game's usable letters
     f = open("eight.csv", encoding="utf-8")
     keywordlist = f.readlines()
     f.close()
@@ -262,8 +264,7 @@ def main():
         drawKeyletterRectangles(backuplist)
         drawUserEntryRectangle(userentry)
         pygame.display.update()
-# run the main function only if this module is executed as the main script
-# (if you import this as a module then nothing is executed)
+
 if __name__=="__main__":
     # call the main function
     main()
