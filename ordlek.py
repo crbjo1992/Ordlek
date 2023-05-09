@@ -24,6 +24,7 @@ pygame.display.set_icon(logo)
 pygame.display.set_caption("Ordlek")
 # define a variable to control the main loop
 clock = pygame.time.Clock()
+fps = 60
 
 
 ###WORDLIST INITIATION FUNCTIONS###
@@ -303,9 +304,13 @@ def drawTime(current_time):
     rectleft = 30
     timetext = font.render(("Tid kvar: " + str(int(current_time))), True, green, None)
     timetextrect = timetext.get_rect()
+    width = (timetextrect.width + 50)
+    height = timetextrect.height
+    rect = pygame.Rect(0,0,width,height)
     timetextrect.bottom = rectbottom
     timetextrect.left = rectleft
-    pygame.draw.rect(surface=screen, rect=timetextrect, color=darkgray)
+    rect.center = timetextrect.center
+    pygame.draw.rect(surface=screen, rect=rect, color=darkgray)
     screen.blit(timetext, timetextrect)
 
 
@@ -403,9 +408,10 @@ def main():
     score: int = 0
 
     # timer init
-    start_time = 300
+    start_time: int = 300
+    TIMER_DEC = pygame.USEREVENT + 1
+    pygame.time.set_timer(TIMER_DEC, 1000)
     current_time = start_time
-    prev_time = time.time()
 
     ### GAME FLAGS ###
     # starting screen flag
@@ -423,10 +429,6 @@ def main():
         if not startgame:
             drawTitleScreen()
 
-        # timer countdown
-        if startgame:
-            current_time -= time.time() - prev_time
-            prev_time = time.time()
 
         if current_time <= 0:
             current_time = 0
@@ -435,6 +437,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 isrunning = False
+            if startgame and not timeup:
+                if event.type == TIMER_DEC:
+                    current_time -= 1
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     isrunning = False
@@ -517,8 +522,10 @@ def main():
             if not readboard:
                 drawGameOver(score, win)
             if continuebutton:
+                foundlist = answerlist
                 continueButton()
         pygame.display.update()
+        clock.tick(fps)
 
 
 if __name__ == "__main__":
