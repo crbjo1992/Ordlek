@@ -14,7 +14,7 @@ I varje spelrunda ingår ett nytt bräde med åtta slumpmässiga bokstäver (men
 
 När tiden är slut kan man välja att avslöja alla möjliga ord - bra för de nyfikna!
 
-Ordlistan innehåller alla möjliga ord på minst tre (och högst åtta naturligtvis) bokstäver. Det kan ev. finnas olämpliga förkortningar osv. Jag uppdaterar ordlistan ständigt när jag själv hittar sådana, men hör av dig gärna om du får ett ord eller förkortning som verkar felaktig, antingen här eller på Discord (kaaos//yksikkö🌄#6942).
+Ordlistan innehåller alla möjliga ord på minst tre (och högst åtta) bokstäver. Det kan ev. finnas olämpliga förkortningar osv. Jag uppdaterar ordlistan ständigt när jag själv hittar sådana, men hör av dig gärna om du får ett ord eller förkortning som verkar felaktig, antingen här eller på Discord (kaaos//yksikkö🌄#6942).
 
 
 # Skärmdumpar
