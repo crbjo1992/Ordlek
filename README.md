@@ -4,7 +4,7 @@
 
 Ett enkelt svenskspråkigt anagramspel. Hinner du hitta alla möjliga ord innan tiden löper ut?
 
-Snart tillgänglig som applikation (åtminstone på Windows). Det här är mitt första spel någonsin, så det kan komma flera diverse funktioner med tid. Förslag tas gärna emot! 
+Nu tillgänglig som Windows .exe för ni som inte sysslar med Python! Kolla "Releases" till höger. Det här är mitt första spel någonsin, så det kan ev. komma ytterligare funktioner/språk/ordlistor med tid. Förslag tas gärna emot! 
 
 *Häng med, det här uppdateras.*
 
