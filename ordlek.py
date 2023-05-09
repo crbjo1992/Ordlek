@@ -3,7 +3,6 @@ import pygame
 from pygame.locals import *
 
 pygame.init()
-pygame.freetype.init()
 ###GLOBAL COLOR VARIABLES###
 white = (255, 255, 255)
 yellow = (255, 255, 0)
@@ -17,14 +16,14 @@ darkgray = (64, 64, 64)
 ###GLOBAL SCREEN VARIABLE###
 screen_width = 1000
 screen_height = 720
-flags = pygame.SCALED
+flags = pygame.SCALED | pygame.RESIZABLE
 screen = pygame.display.set_mode((screen_width, screen_height), flags, vsync=1)
 
 clock = pygame.time.Clock()
 
 ###WORDLIST INITIATION FUNCTIONS###
 def getKeyword():  # pulls nine-letter keyword from wordlist - this will be the game's usable letters
-    f = open("eight.csv", encoding="utf-8")
+    f = open(".\eight.csv", encoding="utf-8")
     keywordlist = f.readlines()
     f.close()
 
@@ -41,7 +40,7 @@ def getLetterList(keyword):  # converts the keyword into an alphabetically sorte
 
 
 def getAnswerList(keyword):  # pulls a list of all words from the wordlist that can be made using the letters in the keyword
-    f = open("wordlisteight.csv", encoding="utf-8")
+    f = open(".\wordlisteight.csv", encoding="utf-8")
     l = f.readlines()
     f.close()
 
@@ -94,7 +93,7 @@ def wordlistInit():
 
 ###PYGAME DRAWING FUNCTIONS###
 def getFont(size):
-    return pygame.font.Font('Archivo-Bold.ttf', size)
+    return pygame.font.Font('.\Archivo-Bold.ttf', size)
 
 
 def drawWordRectangles(lengthlist, foundlist):  # draws placeholder rectangles for solutions not yet found
@@ -249,6 +248,7 @@ def main():
 
     entrybuffer = ""
     userentry = ""
+    answerbuffer = []
     score: int = 0
 
     #hello_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((350, 275), (100, 50)),
@@ -267,8 +267,10 @@ def main():
 
                 if event.key == K_BACKSPACE:
                     if len(userentry) > 0:
-                        backuplist = getLetterList(keyword)
-                        userentry = ""
+                        returntoletterlist = backuplist.index(" ")
+                        lettertoreturn = answerbuffer.pop(-1)
+                        backuplist[returntoletterlist] = lettertoreturn
+                        userentry = userentry[:-1]
 
                 if event.key == K_SPACE:
                     continue
@@ -299,6 +301,7 @@ def main():
                     entrybuffer += event.unicode.upper()
                     if entrybuffer in backuplist:
                         userentry += entrybuffer
+                        answerbuffer.append(entrybuffer)
                         a = backuplist.index(entrybuffer)
                         backuplist[a] = " "
                 entrybuffer = ""
