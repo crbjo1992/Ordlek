@@ -1,7 +1,6 @@
 import random
 import pygame
 from pygame.locals import *
-import time
 
 pygame.init()
 ###GLOBAL COLOR VARIABLES###
