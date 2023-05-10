@@ -355,7 +355,7 @@ def drawGameOver(score, win):
     screen.blit(pabuttontext, pabuttonrect)
     pygame.draw.rect(surface=screen, rect=borderrect, color=white, width=5, border_radius=5)
 
-    seeboardtext = fontsmall.render("Se slutresultat", True, green, None)
+    seeboardtext = fontsmall.render("Visa alla ord", True, green, None)
     seeboardrect = seeboardtext.get_rect()
     bwidth = seeboardrect.width + 40
     bheight = seeboardrect.height + 30
